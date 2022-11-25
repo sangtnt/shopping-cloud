@@ -1,0 +1,124 @@
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page-header start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Basic Form Inputs card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-block">
+                                <h4 class="sub-title"><%= action %> product</h4>
+                                <form action="/admin/product/<%=action%>" method="POST" enctype="multipart/form-data">
+                                    <input name="proId"
+                                        <%if(locals.pro){%>
+                                            value="<%=pro.id%>"
+                                        <%}%>
+                                         type="hidden" class="form-control">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Name</label>
+                                        <div class="col-sm-10">
+                                            <input name="proName"
+                                                <%if(locals.pro){%>
+                                                    value="<%=pro.proName%>"
+                                                <%}%>
+                                                type="text" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Price</label>
+                                        <div class="col-sm-10">
+                                            <input name="proPrice"
+                                                <%if(locals.pro){%>
+                                                    value="<%=pro.proPrice%>"
+                                                <%}%>
+                                                type="number" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Category</label>
+                                        <div class="col-sm-10">
+                                            <select name="category" class="form-control">
+                                                <%cats.forEach((cat)=>{%>
+                                                    <option value="<%=cat.id%>"
+                                                        <%if(locals.pro){%>
+                                                            <%if(pro.category._id==cat.id){%>
+                                                                <%='selected'%>
+                                                            <%}%>   
+                                                        <%}%>     
+                                                    ><%=cat.catName%></option>
+                                                <%})%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Discount (Percent)</label>
+                                        <div class="col-sm-10">
+                                            <select 
+                                                <%if(locals.pro){%>
+                                                    value="<%=pro.proDiscount%>"
+                                                <%}%>
+                                                name="proDiscount" class="form-control">
+                                                <% for(var i=0; i<=100; i++){ %>
+                                                    <option value="<%=i%>" 
+                                                        <%if(locals.pro){%>
+                                                            <%if(pro.proDiscount===i){%>
+                                                                <%='selected'%>
+                                                            <%}%>   
+                                                        <%}%> 
+                                                    ><%=i%>%</option>
+                                                <%}%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Description</label>
+                                        <div class="col-sm-10">
+                                            <textarea name="proDescription" id="mytextarea" rows="5" cols="5" class="form-control"
+                                            placeholder="Format description here" required>
+                                                <%if(locals.pro){%>
+                                                    <%=pro.proDescription%>
+                                                <%}%>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Upload Image</label>
+                                        <div class="col-sm-10">
+                                            <input id="singlefile" name="proFile" type="file" class="form-control" 
+                                                <%if(!locals.pro){%>
+                                                    required
+                                                <%}%>
+                                            >
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div id="img-group" class="col-sm-10">
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <img width="200px" id="img-file" 
+                                                <%if(locals.pro){%>
+                                                    src="<%=pro.proImage%>"
+                                                <%}%>
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <button class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

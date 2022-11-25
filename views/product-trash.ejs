@@ -1,0 +1,47 @@
+<!-- Main-body start-->
+<div class="main-body">
+    <!-- Page-body start-->
+    <div class="page-body">
+        <!-- Basic table card start-->
+        <div class="card">
+            <div class="card-header">
+                <h5>Product Trash</h5>
+            </div>
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Date Created</th>
+                                <th>Date Modified</th>
+                                <th>Image </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% products.forEach((pro)=>{ %>
+                                <tr>
+                                    <td><%=pro.proName%></td>
+                                    <td><%=pro.proPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')%></td>
+                                    <td><%=pro.proQty.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')%></td>
+                                    <td><%=moment(pro.proDateCreated).format('DD/MM/YYYY HH:MM')%></td>
+                                    <td><%=pro.proDateModified%></td>
+                                    <td>
+                                        <img width="100px" src="<%=pro.proImage%>">
+                                    </td>
+                                    <td>
+                                        <a href="/admin/product/recover?id=<%=pro.id%>">
+                                            <button class="btn btn-block btn-dark">Recover</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <%})%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!-- Basic table card end-->
+    </div><!-- Page-body end-->
+</div>

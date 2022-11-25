@@ -1,0 +1,73 @@
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li class="active">product Details</li>
+    </ul>
+    <div class="row">
+        <div id="gallery" class="span3">
+            <a href="<%=pro.proImage%>" title="<%=pro.proName%>">
+                <img src="<%=pro.proImage%>" style="width:100%"
+                    alt="<%=pro.proName%>" />
+            </a>
+        </div>
+        <div class="span6">
+            <h3><%=pro.proName%> </h3>
+            <hr class="soft" />
+            <%if(pro.proQty>0){%>
+                <form action="/product/addtocart" method="POST" class="form-horizontal qtyFrm">
+                    <div class="control-group">
+                        <label class="control-label"><span><%=pro.proPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')%> VND</span></label>
+                        <div class="controls">
+                            <input type="hidden" value="<%=pro.id%>" name="proId">
+                            <input name="qty" type="number" class="span1 qty-input" placeholder="Qty." required/>
+                            <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart
+                                <i class=" icon-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr class="soft" />
+            <%}%>
+            <h4 ><span id="pro-qty"><%=pro.proQty.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')%></span> items in stock</h4>
+        </div>
+
+        <div class="span9">
+            <ul id="productDetail" class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
+                <li><a href="#profile" data-toggle="tab">Related Products</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="home">
+                    <%-pro.proDescription%>
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <br class="clr" />
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="blockView">
+                            <ul class="thumbnails">
+                                <%relatedPros.forEach(pro=>{%>
+                                    <li class="span3">
+                                        <div class="thumbnail">
+                                            <a href="/product/product-details?id=<%=pro.id%>"><img src="<%=pro.proImage%>"
+                                                    alt="" /></a>
+                                            <div class="caption">
+                                                <h5><%=pro.proName%></h5>
+                                                <h4 style="text-align:center"><a class="btn" href="/product/product-details?id=<%=pro.id%>"> <i
+                                                            class="icon-zoom-in"></i></a>  <a class="btn btn-primary"
+                                                        href="#"><%=pro.proPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')%></a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </li>    
+                                <%})%>
+                            </ul>
+                            <hr class="soft" />
+                        </div>
+                    </div>
+                    <br class="clr">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GURU able / MANAGER</title><!-- Meta-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="CodedThemes">
+    <meta name="keywords"
+        content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="CodedThemes"><!-- Favicon icon-->
+    <link rel="icon" href="/public/static/images/favicon.ico" type="image/x-icon"><!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet"><!-- Required Fremwork-->
+    <link rel="stylesheet" type="text/css" href="/public/static/css/bootstrap/css/bootstrap.min.css">
+    <!-- themify-icons line icon-->
+    <link rel="stylesheet" type="text/css" href="/public/static/icon/themify-icons/themify-icons.css"><!-- ico font-->
+    <link rel="stylesheet" type="text/css" href="/public/static/icon/icofont/css/icofont.css"><!-- Style.css-->
+    <link rel="stylesheet" type="text/css" href="/public/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/static/css/jquery.mCustomScrollbar.css">
+</head><!-- Pre-loader start-->
+
+<body>
+    <!-- page loader -->
+    <%- include('../partials/pageloader.ejs') %>
+        <div class="pcoded" id="pcoded">
+            <div class="pcoded-overlay-box"></div>
+            <div class="pcoded-container navbar-wrapper">
+                <!-- menu -->
+                <%- include('../partials/menu.ejs') %>
+                    <div class="pcoded-main-container">
+                        <div class="pcoded-wrapper">
+                            <!-- sidebar -->
+                            <%- include('../partials/sidebar.ejs') %>
+                                <div class="pcoded-content">
+                                    <div class="pcoded-inner-content">
+                                        <!-- main body -->
+                                        <%- body %>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+        </div><!-- Warning Section Ends-->
+        <!-- Required Jquery-->
+        <script type="text/javascript" src="/public/static/js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/public/static/js/jquery-ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/public/static/js/popper.js/popper.min.js"></script>
+        <script type="text/javascript" src="/public/static/js/bootstrap/js/bootstrap.min.js"></script>
+        <!-- jquery slimscroll js-->
+        <script type="text/javascript" src="/public/static/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+        <!-- modernizr js-->
+        <script type="text/javascript" src="/public/static/js/modernizr/modernizr.js"></script><!-- am chart-->
+        <script src="/public/static/pages/widget/amchart/amcharts.min.js"></script>
+        <script src="/public/static/pages/widget/amchart/serial.min.js"></script><!-- Todo js-->
+        <script type="text/javascript " src="/public/static/pages/todo/todo.js "></script><!-- Custom js-->
+        <script type="text/javascript" src="/public/static/pages/dashboard/custom-dashboard.js"></script>
+        <script type="text/javascript" src="/public/static/js/script.js"></script>
+        <script type="text/javascript " src="/public/static/js/SmoothScroll.js"></script>
+        <script src="/public/static/js/pcoded.min.js"></script>
+        <script src="/public/static/js/demo-12.js"></script>
+        <script src="/public/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/7nzpp9npbaxcacgkw3kkaxcl4xosd9yrvm249kcurnzupyjk/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
+        <script>
+            $('#singlefile').change(function () {
+                var input = this;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img-file').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            })
+            $('#multifiles').change(function () {
+                var input = this;
+                $("#img-group").empty();
+                for (var i = 0; i < input.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('<img height="200px">').attr('src', e.target.result).appendTo("#img-group");
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            })
+            var form = document.getElementById("form-search-admin");
+
+            document.getElementById("btn-search-admin").addEventListener("click", function () {
+                if ($("#input_search_admin").val() !== "") {
+                    form.submit();
+                }
+            });
+
+            tinymce.init({
+                selector: '#mytextarea'
+            });
+            $("#staff-per").change(function(){
+                var id = $(this).val()
+                    if(id!="608b81c041e21a5a37b902c7"){
+                       $("#staff-branch").hide() 
+                    }
+                    else{
+                        $("#staff-branch").show() 
+                    }
+                
+            })
+        </script>
+</body>
+
+</html>

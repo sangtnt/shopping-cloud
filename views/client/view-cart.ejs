@@ -1,0 +1,117 @@
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li class="active"> SHOPPING CART</li>
+    </ul>
+    <h3> SHOPPING CART<a href="/" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping
+        </a></h3>
+        <%if (locals.message){%>
+            <div class="alert alert-block alert-success fade in"><%=message%></div>    
+        <%}%>
+        <%if (locals.error){%>
+            <div class="alert alert-block alert-error fade in"><%=error%></div>   
+        <%}%>
+    <table class="table table-bordered">
+        <tr>
+            <th> Contact Information </th>
+        </tr>
+        <tr>
+            <td>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputUsername">Full name</label>
+                        <div class="controls">
+                            <input value="<%=user.fullname%>" type="text" id="inputUsername" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword1">Phone</label>
+                        <div class="controls">
+                            <input value="<%=user.phone%>" type="text" id="inputPassword1" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword1">Address</label>
+                        <div class="controls">
+                            <input value="<%=user.address%>" type="text" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword1">Email</label>
+                        <div class="controls">
+                            <input value="<%=user.email%>" type="text" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <a href="/user/profile" style="text-decoration:underline">Change information?</a>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <hr class="soft" />
+    <%if(locals.pros){%>
+        <%if(pros.length>0){%>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%var total=0%>
+                        <%for (var item of pros){%>
+                            <tr>
+                                <td> <img width="60" src="<%=item.product.proImage%>" alt="" />
+                                    <a href="/product/removeItemFromCart?index=<%=cart.indexOf(item)%>">
+                                        <button onclick="return confirm('Remove item out of cart?')" class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%=item.product.proName%>
+                                </td>
+                                <td>
+                                    <%=item.qty%>
+                                </td>
+                                <td>
+                                    <%=item.product.proPrice.toString().replace( /\B(?=(\d{3})+(?!\d))/g, ',' )%>
+                                </td>
+                                <td>
+                                    <%=Math.ceil((item.product.proPrice*((item.product.proDiscount)
+                                        /100))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',' )%> (
+                                        <%=item.product.proDiscount%>%)
+                                </td>
+                                <td>
+                                    <%total=total+ (item.product.proPrice*((100-item.product.proDiscount)/100)*item.qty)%>
+                                        <%=Math.ceil((item.product.proPrice*((100-item.product.proDiscount)
+                                            /100)*item.qty)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',' )%>
+                                </td>
+                            </tr>
+                            <%}%>
+        
+                                <tr>
+                                    <td colspan="5" style="text-align:right">SHIPPING FEE: </td>
+                                    <td> 50,000</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="text-align:right"><strong>TOTAL =</strong>
+                                    </td>
+                                    <td class="label label-important" style="display:block"> <strong>
+                                            <%=Math.ceil(total+50000).toString().replace( /\B(?=(\d{3})+(?!\d))/g, ',' )%>
+                                        </strong></td>
+                                </tr>
+                </tbody>
+            </table>    
+            <a href="/product/checkout" class="btn btn-large pull-right" onclick="return confirm('Are you sure to check out?')">Next <i class="icon-arrow-right"></i></a>
+        <%}%>    
+    <%}%>
+    <a href="/" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+
+</div>

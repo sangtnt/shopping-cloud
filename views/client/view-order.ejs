@@ -1,0 +1,90 @@
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li class="active"> Orders</li>
+    </ul>
+    <h3> Orders<a href="/" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping
+        </a></h3>
+    <hr class="soft" />
+            <%orders.forEach(order=>{%>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="6">OrderID: <%=order.id%></th>
+                        </tr>
+                        <tr>
+                            <th colspan="6">Date: <%=moment(order.date).format('DD/MM/YYYY HH:MM')%></th>
+                        </tr>
+                        <tr>
+                            <th colspan="6">
+                                <%if(order.status==0){%>
+                                    <span style="color: blue; font-weight: bold;">Pending...</span>
+                                    <a href="/user/changeStatus?id=<%=order.id%>&status=2">
+                                        <button class="btn btn-outline-danger"
+                                        onclick="return confirm('This product will be moved to trash, you can recover it whenever you want!')">Cancel</button>
+                                    </a>
+                                <%} else if(order.status==1){%>
+                                    <span style="color: blue; font-weight: bold;">Accepted</span>
+                                <%}else if(order.status==2){%>
+                                    <span style="color: red; font-weight: bold;">
+                                        Canceled
+                                    </span>
+                                <%}else{%>
+                                    <span style="color: blue; font-weight: bold;">Completed</span>
+                                <%}%>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Discount</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%var total=0%>
+                            <%order.orderDetails.forEach(item=>{%>
+                                <tr>
+                                    <td> <img width="60" src="<%=item.product.proImage%>" alt="" />
+                                    </td>
+                                    <td>
+                                        <%=item.product.proName%>
+                                    </td>
+                                    <td>
+                                        <%=item.qty%>
+                                    </td>
+                                    <td>
+                                        <%=item.product.proPrice.toString().replace( /\B(?=(\d{3})+(?!\d))/g, ',' )%>
+                                    </td>
+                                    <td>
+                                        <%=Math.ceil((item.product.proPrice*((item.product.proDiscount)
+                                            /100))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',' )%> (
+                                            <%=item.product.proDiscount%>%)
+                                    </td>
+                                    <td>
+                                        <%total=total+ (item.product.proPrice*((100-item.product.proDiscount)/100)*item.qty)%>
+                                            <%=Math.ceil((item.product.proPrice*((100-item.product.proDiscount)
+                                                /100)*item.qty)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',' )%>
+                                    </td>
+                                </tr>
+                                <%})%>
+            
+                                    <tr>
+                                        <td colspan="5" style="text-align:right">SHIPPING FEE: </td>
+                                        <td> 50,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align:right"><strong>TOTAL =</strong>
+                                        </td>
+                                        <td class="label label-important" style="display:block"> <strong>
+                                                <%=Math.ceil(total+50000).toString().replace( /\B(?=(\d{3})+(?!\d))/g, ',' )%>
+                                            </strong></td>
+                                    </tr>
+                    </tbody>
+                </table>    
+            <%})%>
+    <a href="/" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+
+</div>

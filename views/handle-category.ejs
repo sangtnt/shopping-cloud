@@ -1,0 +1,63 @@
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page-header start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Basic Form Inputs card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-block">
+                                <h4 class="sub-title"><%= action %> Category</h4>
+                                <form action="/admin/category/<%=action%>" method="POST" enctype="multipart/form-data">
+                                    <input name="catId" 
+                                    <%if(locals.cat){%>
+                                        value="<%=cat.id%>"
+                                    <%}%>
+                                    type="hidden" readonly>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Name</label>
+                                        <div class="col-sm-10">
+                                            <input
+                                                <%if(locals.cat){%>
+                                                    value="<%=cat.catName%>"
+                                                <%}%>
+                                                name="catName" type="text" class="form-control" required
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Upload Image</label>
+                                        <div class="col-sm-10">
+                                            <input id="singlefile" name="catFile" type="file" class="form-control" 
+                                                <%if(!locals.cat){%>
+                                                    required
+                                                <%}%>
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <img width="200px" id="img-file" 
+                                                <%if(locals.cat){%>
+                                                    src="<%=cat.catImage%>"
+                                                <%}%>
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

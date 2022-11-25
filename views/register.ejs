@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GURU able</title>
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+    <!--if lt IE 9script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')-->
+    <!-- Meta-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="CodedThemes">
+    <meta name="keywords"
+        content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="CodedThemes"><!-- Favicon icon-->
+    <link rel="icon" href="/public/static/images/favicon.ico" type="image/x-icon"><!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Required Fremwork-->
+    <link rel="stylesheet" type="text/css" href="/public/static/css/bootstrap/css/bootstrap.min.css">
+    <!-- themify-icons line icon-->
+    <link rel="stylesheet" type="text/css" href="/public/static/icon/themify-icons/themify-icons.css"><!-- ico font-->
+    <link rel="stylesheet" type="text/css" href="/public/static/icon/icofont/css/icofont.css"><!-- Style.css-->
+    <link rel="stylesheet" type="text/css" href="/public/static/css/style.css">
+    <script src="https://accounts.google.com/gsi/client" async></script>
+</head><!-- Pre-loader start-->
+
+<body>
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class="contain">
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- Pre-loader end-->
+    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start-->
+                    <div class="signup-card card-block auth-body mr-auto ml-auto">
+                        <form action="/auth/register" method="POST" class="md-float-material">
+                            <div class="text-center"><img src="/public/static/images/auth/logo-dark.png" alt="logo.png">
+                            </div>
+                            <div class="auth-box">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center txt-primary">Sign up. It is fast and easy.</h3>
+                                    </div>
+                                </div>
+                                <%if(locals.message){%>
+                                    <div class="bg-warning p-10">
+                                        <%=message%>
+                                    </div>
+                                    <%}%>
+                                        <hr>
+                                        <div class="input-group"><input name="username" class="form-control" type="text"
+                                                placeholder="Username" required><span class="md-line"></span></div>
+                                        <div class="input-group"><input name="password" class="form-control"
+                                                type="password" placeholder="Password" required><span
+                                                class="md-line"></span></div>
+                                        <div class="input-group"><input name="repassword" class="form-control"
+                                                type="password" placeholder="Confirm Password" required><span
+                                                class="md-line"></span></div>
+                                        <div class="row m-t-30">
+                                            <div class="col-md-12"><button
+                                                    class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+                                                    type="submit">Sign up now.</button></div>
+                                        </div>
+                                        <hr>
+                                        <div class="row m-t-30">
+                                            <div class="g_id_signin col-md-12 btn-block"
+                                            data-type="standard"
+                                            data-size="large"
+                                            data-theme="outline"
+                                            data-text="continue_with"
+                                            data-shape="rectangular"
+                                            data-logo_alignment="left">
+                                            </div>
+                                            <div id="g_id_onload"
+                                                data-client_id="989129560884-c4jp9g48v77ink55usr1uip7oq1j452h.apps.googleusercontent.com"
+                                                data-login_uri="http://localhost:4000/auth/loginGoogle">
+                                            </div>
+                                        </div>
+                            </div>
+                        </form><!-- end of form-->
+                    </div><!-- Authentication card end-->
+                </div><!-- end of col-sm-12-->
+            </div><!-- end of row-->
+        </div><!-- end of container-fluid-->
+    </section><!-- Warning Section Ends-->
+    <!-- Required Jquery-->
+    <script type="text/javascript" src="/public/static/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/static/js/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/public/static/js/popper.js/popper.min.js"></script>
+    <script type="text/javascript" src="/public/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js-->
+    <script type="text/javascript" src="/public/static/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- modernizr js-->
+    <script type="text/javascript" src="/public/static/js/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="/public/static/js/modernizr/css-scrollbars.js"></script>
+    <script type="text/javascript" src="/public/static/js/common-pages.js"></script>
+</body>
+
+</html>
